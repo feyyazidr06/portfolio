@@ -1,0 +1,24 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}
+- Notes
+{% endblock %}
+
+{% block main %}
+    <h1>Notes</h1>
+
+    <table class="table" style="width: 50vw; margin-left: auto; margin-right: auto; margin-top: 3rem;">
+        {% for note in notes %}
+        <tr>
+            <td><a href="{% url 'deletenote' note.id %}"><span class="material-symbols-outlined">cancel</span></a></td>
+            <td><a href="{% url 'note' note.id %}">{{ note.title }}</a></td>
+            <td><a href="{% url 'editnote' note.id %}"><input type="button" class="btn btn-warning" value="Edit"></a></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td><a href="{% url 'addnote' %}">+ Add Note</a></td>
+            <td></td>
+        </tr>
+    </table>
+{% endblock %}

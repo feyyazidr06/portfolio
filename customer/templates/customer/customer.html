@@ -1,0 +1,109 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}
+- Customer
+{% endblock %}
+
+{% block main %}
+<div id="customer-details">
+    <h1>Customer Details</h1>
+
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        Successfully Changed!
+    </div>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="date" name="date" id="date" class="form-control" required {% if customer.date %}value="{{ customer.date|date:'Y-m-d' }}"{% endif %}>
+                    <label for="date">Датум</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="date" name="fin-date" id="fin-date" class="form-control" {% if customer.fin_date %}value="{{ customer.fin_date|date:'Y-m-d' }}"{% endif %}>
+                    <label for="fin-date" class="form-label">Finish Датум</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" name="name" class="form-control" autofocus {% if customer.name %}value="{{ customer.name }}"{% endif %}>
+                    <label for="name">Име</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" name="phone" class="form-control" required {% if customer.tel %}value="{{ customer.tel }}"{% endif %}>
+                    <label for="phone">Телефонски Бр.</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" name="brand" class="form-control" {% if customer.brand %}value="{{ customer.brand }}"{% endif %}>
+                    <label for="brand">Марка</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" name="model" class="form-control" {% if customer.model %}value="{{ customer.model }}"{% endif %}>
+                    <label for="model">Модел</label>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="reason" class="form-label">Опис на дефект</label>
+            <textarea name="reason" id="reason" class="form-control" placeholder="Опис на дефект" cols="30" rows="3">{% if customer.reason %}{{ customer.reason }}{% endif %}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="solution" class="form-label">Опис на поправка</label>
+            <textarea name="solution" id="solution" class="form-control" placeholder="Опис на поправка" cols="30" rows="3">{% if customer.solution %}{{ customer.solution }}{% endif %}</textarea>
+        </div>
+        <div class="row g-2 mb-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" name="price" class="form-control" {% if customer.price %}value="{{ customer.price }}"{% endif %}>
+                    <label for="price">Цена</label>
+                </div>
+            </div>
+            <div class="col-md">
+                <input class="form-check-input" type="checkbox" name="active" {% if customer.active %}checked{% endif %}>
+                <label class="form-check-label" for="active">Aктив</label>
+            </div>
+        </div>
+        <div class="row g-2 mb-3">
+            <div class="col-md">
+                <input class="form-check-input" type="checkbox" name="foot" {% if customer.foot %}checked{% endif %}>
+                <label class="form-check-label" for="foot">Ногарка</label>
+            </div>
+            <div class="col-md">
+                <input class="form-check-input" type="checkbox" name="drzac" {% if customer.drzac %}checked{% endif %}>
+                <label class="form-check-label" for="drzac">Држач</label>
+            </div>
+            <div class="col-md">
+                <input class="form-check-input" type="checkbox" name="remote" {% if customer.remote %}checked{% endif %}>
+                <label class="form-check-label" for="remote">Далечинско</label>
+            </div>
+            <div class="col-md">
+                <input class="form-check-input" type="checkbox" name="cable" {% if customer.cabel %}checked{% endif %}>
+                <label class="form-check-label" for="cable">Кабел</label>
+            </div>
+            <div class="col-md">
+                <input class="form-check-input" type="checkbox" name="module" {% if customer.module %}checked{% endif %}>
+                <label class="form-check-label" for="module">CAM Module</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <a href="{% url 'warranty' customer.id %}"><input type="button" value="Print" class="btn btn-primary" style="width: 21.5vw;"></a>
+            <input type="submit" value="Save" class="btn btn-success" style="width: 21.5vw;">
+        </div>
+    </form>
+</div>
+{% endblock %}

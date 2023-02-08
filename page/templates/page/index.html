@@ -1,0 +1,245 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="web developer, web developer in mk, web macedonia, programmer macedonia, developer macedonia">
+    <meta name="description" content="This portfolio website is made to provide professional information about us and to present a showcase of our projects.">
+    <meta name="author" content="fidriz.">
+    <!-- Title & Favicon -->
+    <title>fidriz. - Portfolio Website</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'page/images/logo_icon.ico' %}">
+    <!-- Links -->
+    <link rel="stylesheet" href="{% static 'page/style.css' %}">
+    <link rel="apple-touch-icon" href="{% static 'page/images/logo_icon.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://kit.fontawesome.com/c0deffa687.js" crossorigin="anonymous"></script>
+    <!-- Email JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('Ol9bDy7-aReYtqs0i');
+        })();
+
+        function SendMail() {
+            var params = {
+                name : document.getElementById("name").value,
+                user_email : document.getElementById("email").value,
+                subject : document.getElementById("subject").value,
+                message : document.getElementById("message").value,
+            }
+            emailjs.send("service_iuf0cgz","template_tqx8zr8", params).then(function (res) {
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("subject").value = "";
+                document.getElementById("message").value = "";
+            })
+        }
+    </script>
+</head>
+<body>
+        <header class="pad200">
+            <img src="{% static 'page/images/logo_icon.png' %}" alt="fidriz icon">
+            <nav>
+                <ul>
+                    <li class="hvr-underline-from-right"><a href="#home">Home</a></li>
+                    <li class="hvr-underline-from-right"><a href="#projects">Projects</a></li>
+                    <li class="hvr-underline-from-right"><a href="#about">About</a></li>
+                    <li class="hvr-underline-from-right"><a href="#contact">Contact</a></li>
+                    <li><a href="#contact"><button id="cta-send">Send a message</button></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="home" class="pad200">
+            <div>
+                <h1>We are <img src="{% static 'page/images/logo.png' %}" alt="fidriz logo"></h1>
+                <p>"If somebody offers you an amazing opportunity but you are not sure you can do it, say yes, then learn how to do it later!"</p>
+            </div>
+        </div>
+
+        <div style="position: relative; margin-top: 201px;">
+            <div class="custom-shape-divider-bottom-1673710276">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div id="projects" class="pad200">
+            <h2 class="h2-dark animate__animated" id="projectsh2">Our Projects</h2>
+
+            <div id="project" class="animate__animated">
+                <div class="project">
+                    <img src="{% static 'page/images/gourmetch.jpg' %}" alt="gourmetch">
+                    <h3>Gourmetch</h3>
+                    <div class="desc">
+                        <p>Gourmetch is a web app that makes you able to switch from traditional menus to online sexy menus that are accessible by QR Code.</p>
+                    </div>
+                    <div class="buttons">
+                        <a href="https://gourmetch.com" target="_blank"><button class="btn primary">Run program</button></a>
+                        <a href="https://github.com/feyyazidr06/gourmetch" target="_blank"><button class="btn secondary">View code</button></a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <img src="{% static 'page/images/customer.jpg' %}" alt="customer tracking">
+                    <h3>Customer Tracking</h3>
+                    <div class="desc">
+                        <p>Customer Tracking is a web application that is used to keep track of your customers, inside of the application you can add and find your customers.</p>
+                    </div>
+                    <div class="buttons">
+                        <a href="/customer" target="_blank"><button class="btn primary" target="_blank">Run program</button></a>
+                        <a href="https://github.com/feyyazidr06/customer-tracking" target="_blank"><button class="btn secondary">View code</button></a>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <img src="{% static 'page/images/fidriz.jpg' %}" alt="fidriz portfolio">
+                    <h3>fidriz. Portfolio</h3>
+                    <div class="desc">
+                        <p>This portfolio website is made to provide professional information about us and to present a showcase of our projects.</p>
+                    </div>
+                    <div class="buttons">
+                        <a href="/" target="_blank"><button class="btn primary">Run program</button></a>
+                        <a href="https://github.com/feyyazidr06/portfolio" target="_blank"><button class="btn secondary">View code</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="position: relative; padding-bottom: 100px; margin-top: -1px;">
+            <div class="custom-shape-divider-top-1673712489">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div id="about" class="pad200 animate__animated">
+            <h2>Who We Are</h2>
+            <div id="content">
+                <div id="story">
+                    <p>We're a web development company that believes in the power of technology to create brilliant solutions and innovative experiences. Our clients are always looking for ways to be more efficient, create new products and services, and increase their bottom line—and we're here to help them do it. We know how important it is for your business to stand out from the crowd; that's why we'll work with you from start to finish, from concept through launch, so you can spend less time on the mundane stuff and more time on what matters most: making your customers happy!</p>
+                </div>
+                <div id="myCanvasContainer">
+                    <canvas width="400" height="400" id="myCanvas">
+                        <ul id="tags">
+                            <a href="#"><li>HTML</li></a>
+                            <a href="#"><li>CSS</li></a>
+                            <a href="#"><li>SASS</li></a>
+                            <a href="#"><li>Tailwind CSS</li></a>
+                            <a href="#"><li>Bootstrap</li></a>
+                            <a href="#"><li>JavaScript</li></a>
+                            <a href="#"><li>TypeScript</li></a>
+                            <a href="#"><li>JQuery</li></a>
+                            <a href="#"><li>Angular</li></a>
+                            <a href="#"><li>ReactJS</li></a>
+                            <a href="#"><li>EmailJS</li></a>
+                            <a href="#"><li>JSON</li></a>
+                            <a href="#"><li>GSAP</li></a>
+                            <a href="#"><li>Python</li></a>
+                            <a href="#"><li>Django</li></a>
+                            <a href="#"><li>SQLite</li></a>
+                            <a href="#"><li>Git</li></a>
+                            <a href="#"><li>Markdown</li></a>
+                        </ul>
+                    </canvas>
+                </div>
+            </div>
+        </div>
+
+        <div style="position: relative; margin-top: 200px;">
+            <div class="custom-shape-divider-bottom-1673710276">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div id="contact" class="pad200">
+            <h2 class="h2-dark animate__animated">Let's Talk. But You First</h2>
+            <p class="p-dark animate__animated" id="contact-desc">Let's talk about your website or project. Send us a message and we will be in touch within one business day.</p>
+            <div class="row animate__animated">
+                <div id="icons">
+                    <div class="icon hvr-underline-from-right">
+                        <a href="mailto:contact@fidriz.online">
+                            <i class="fa-solid fa-envelope" style="font-size: 1.8rem;"></i>
+                            <p>contact@fidriz.online</p>
+                        </a>
+                    </div>
+                    <div class="icon hvr-underline-from-right">
+                        <a href="tel:+38971688622">
+                            <i class="fa-solid fa-phone" style="font-size: 1.8rem;"></i>
+                            <p>+389 71 688 622</p>
+                        </a>
+                    </div>
+                    <div class="icon hvr-underline-from-right">
+                        <a href="https://www.instagram.com/feyyazidr06" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                            <p>/feyyazidr06</p>
+                        </a>
+                    </div>
+                    <div class="icon hvr-underline-from-right">
+                        <a href="https://www.facebook.com/feyyazidr06" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                            <p>/feyyazidr06</p>
+                        </a>
+                    </div>
+                    <div class="icon hvr-underline-from-right">
+                        <a href="https://github.com/feyyazidr06" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                            <p>/feyyazidr06</p>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <form action="" id="contact-form" method="post">
+                        {% csrf_token %}
+                        <div class="form">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" name="email" placeholder="Your e-mail address" class="form-inp">
+                        </div>
+                        <div class="form">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" class="form-inp">
+                        </div>
+                        <div class="form">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Your subject" class="form-inp">
+                        </div>
+                        <div class="form">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" cols="30" rows="10" placeholder="Your message" class="form-inp"></textarea>
+                        </div>
+                        <div class="form">
+                            <input type="button" value="Send" id="form-btn" class="form-btn" onclick="SendMail()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div style="position: relative; padding-bottom: 100px; margin-top:  -1px;">
+            <div class="custom-shape-divider-top-1673712489">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </div>
+
+        <footer>
+            <a href="/"><img src="{% static 'page/images/logo.png' %}" alt="fidriz logo"></a>
+            <p><b>© 2023 fidriz. All Rights Reserved.</b></p>
+        </footer>
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        <script src="{% static 'page/jquery.tagcanvas.js' %}"></script>
+        <script src="{% static 'page/script.js' %}"></script>
+</body>
+</html>

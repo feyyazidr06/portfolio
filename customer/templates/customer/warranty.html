@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body style="width: 90%; margin-top: 20px; margin-left: auto; margin-right: auto;">
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div>
+            {% if company.logo %}
+            <img src="{% static 'customer/logo/logo.png' %}" alt="" width="250">
+            {% else %}
+            <h2>{{ company.name }}</h2>
+            {% endif %}
+        </div>
+        <div>
+            <table class="table" style="font-size: 0.8rem; margin-top: 5px;">
+                <tr>
+                    <td></td>
+                    <td>Број на налог : <b>{{ c.id }} / {{ c.date|date:'Y' }}</b></td>
+                </tr>
+                {% if company.location %}
+                <tr>
+                    <td><span class="material-symbols-outlined">location_on</span></td>
+                    <td>{{ company.location }}</td>
+                </tr>
+                {% endif %}
+                {% if company.phone %}
+                <tr>
+                    <td><span class="material-symbols-outlined">phone_in_talk</span></td>
+                    <td>{{ company.phone }}</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <td style="border-right: 1px solid #dee2e6; width: 140px;">Датум на прием</td>
+                <td>{{ c.date|date:'Y-m-d' }}</td>
+                <td style="border-right: 1px solid #dee2e6; border-left: 1px solid #dee2e6; width: 160px;">Датум на издавање</td>
+                <td>{{ c.fin_date|date:'Y-m-d' }}</td>
+            </tr>
+            <tr>
+                <td style="border-right: 1px solid #dee2e6; width: auto;">Име</td>
+                <td>{{ c.name }}</td>
+                <td style="border-right: 1px solid #dee2e6; border-left: 1px solid #dee2e6; width: auto;">Телефонски Бр.</td>
+                <td>{{ c.tel }}</td>
+            </tr>
+            <tr>
+                <td style="border-right: 1px solid #dee2e6; width: auto;">Марка</td>
+                <td>{{ c.brand }}</td>
+                <td style="border-right: 1px solid #dee2e6; border-left: 1px solid #dee2e6; width: auto;">Модел</td>
+                <td>{{ c.model }}</td>
+            </tr>
+            <tr>
+                <td style="border-right: 1px solid #dee2e6; width: auto;">Опис на дефект</td>
+                <td colspan="3">{{ c.reason }}</td>
+            </tr>
+            <tr>
+                <td style="border-right: 1px solid #dee2e6; width: auto;">Опис на поправка</td>
+                <td colspan="3">{{ c.solution }}</td>
+            </tr>
+            <tr>
+                <td style="border-right: 1px solid #dee2e6;">
+                    <input class="form-check-input" type="checkbox" name="foot" disabled {% if c.foot %}checked{% endif %}>
+                    <label class="form-check-label" for="foot">Ногарка</label>
+                </td>
+                <td style="border-right: 1px solid #dee2e6;">
+                    <input class="form-check-input" type="checkbox" name="drzac" disabled {% if c.drzac %}checked{% endif %}>
+                    <label class="form-check-label" for="drzac">Држач</label>
+                </td>
+                <td style="border-right: 1px solid #dee2e6;">
+                    <input class="form-check-input" type="checkbox" name="remote" disabled {% if c.remote %}checked{% endif %}>
+                    <label class="form-check-label" for="remote">Далечинско</label>
+                </td>
+                <td style="border-right: 1px solid #dee2e6;">
+                    <input class="form-check-input" type="checkbox" name="cable" disabled {% if c.cabel %}checked{% endif %}>
+                    <label class="form-check-label" for="cable">Кабел</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-right: 1px solid #dee2e6;">
+                    <input class="form-check-input" type="checkbox" name="module" disabled {% if c.module %}checked{% endif %}>
+                    <label class="form-check-label" for="module">CAM Module</label>
+                </td>
+                <td></td>
+                <td style="border-right: 1px solid #dee2e6;">Вкупно за наплата</td>
+                <td>{{ c.price }} ден.</td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: flex; flex-direction: row;">
+        <div style="width: 60%; margin-right: 20px;">
+            <p style="font-size: 0.6rem;">{{ content }}</p>
+        </div>
+        <div style="width: 40%;">
+            Потпис
+            <hr>
+        </div>
+    </div>
+</body>
+</html>

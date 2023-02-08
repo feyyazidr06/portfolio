@@ -1,0 +1,26 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}
+- Doc
+{% endblock %}
+
+{% block main %}
+    <h2 class="mb-3">Content</h2>
+
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        Successfully Changed!
+    </div>
+    {% endif %}
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content">{% if content %}{{ content }}{% endif %}</textarea>          
+        </div>
+
+        <div class="mb-3">
+            <input type="submit" value="Save" class="btn btn-success">
+        </div>
+    </form>
+{% endblock %}

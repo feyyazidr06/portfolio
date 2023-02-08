@@ -1,0 +1,51 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}
+- List
+{% endblock %}
+
+{% block main %}
+    <h1>Customer List</h1>
+
+    <form action="{% url 'search' %}" method="POST">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search..." aria-describedby="button-addon2" name="q">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><span class="material-symbols-outlined">search</span></button>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <th></th>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Reason</th>
+            <th>Solution</th>
+            <th>Price</th>
+            <th>Finished</th>
+        </thead>
+        <tbody>
+            {% for i in items %}
+            <tr>
+                <td><a href="{% url 'delete' i.id %}"><span class="material-symbols-outlined">cancel</span></a></td>
+                <td><a href="{{i.id}}">{{ i.id }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.tel }}</td>
+                <td>{{ i.brand }}</td>
+                <td>{{ i.model }}</td>
+                <td>{{ i.reason }}</td>
+                <td>{{ i.solution }}</td>
+                <td>{{ i.price }}</td>
+                <td>{{ i.fin_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

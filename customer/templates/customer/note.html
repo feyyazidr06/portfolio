@@ -1,0 +1,38 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}
+- Note | {{ title }}
+{% endblock %}
+
+{% block main %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+        {% if edit %}
+            <input type="text" class="form-control" name="title" placeholder="Enter a title" {% if title %}value="{{ title }}"{% endif %}>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content">{% if content %}{{ content }}{% endif %}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <input type="submit" value="Save" class="btn btn-success">
+        </div>
+        {% else %}
+            <input type="text" class="form-control" name="title" placeholder="Enter a title" value="{{ title }}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Enter a content" readonly>{{ content }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <a href="{% url 'editnote' id %}"><input type="button" value="Edit" class="btn btn-warning"></a>
+        </div>
+        {% endif %}
+    </form>
+{% endblock %}

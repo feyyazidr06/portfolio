@@ -1,0 +1,37 @@
+{% extends 'customer/layout.html' %}
+
+{% block title %}
+- Company
+{% endblock %}
+
+{% block main %}
+    <h2 class="mb-3">Company Details</h2>
+
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        Successfully Changed!
+    </div>
+    {% endif %}
+
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input class="form-control" type="file" accept="image/*" id="img" name="img">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Име</span>
+            <input type="text" name="company-name" class="form-control" placeholder="Enter a name" {% if company.name %}value="{{ company.name }}"{% endif %}>
+        </div>
+        <div class="input-group mb-3">
+            <span class="material-symbols-outlined input-group-text">location_on</span>
+            <input type="text" name="company-loc" class="form-control" placeholder="Enter a location" {% if company.location %}value="{{ company.location }}"{% endif %}>
+        </div>
+        <div class="input-group mb-3">
+            <span class=" material-symbols-outlined input-group-text">phone_in_talk</span>
+            <input type="text" name="company-phone" class="form-control" placeholder="Enter a phone number" {% if company.phone %}value="{{ company.phone }}"{% endif %}>
+        </div>
+        <div class="mb-3">
+            <input type="submit" class="btn btn-success" value="Save">
+        </div>
+    </form>
+{% endblock %}
